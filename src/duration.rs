@@ -1,6 +1,8 @@
+use std::cmp::Ordering;
 use crate::units::{PreciseTime};
 use crate::constants::*;
 
+#[derive(Debug,Clone,Copy,PartialEq,Eq)]
 pub struct Duration {
     secs: u64,
     picos: u64,
@@ -9,6 +11,22 @@ pub struct Duration {
 impl Duration {
     fn new(secs: u64, nanos: u32) {
         Self { secs, nanos }
+    }
+}
+
+impl Ord for Duration {
+    fn cmp(&self, other: &Self) -> Ordering {
+        if self.secs == other.secs {
+            self.picos.cmp(other.picos)
+        } else {
+            self.secs.cmp(other.secs)
+        }
+    }
+}
+
+impl PartialOrd for Duration {
+    fn cmp(&self, other: &Self) -> Option<Ordering> {
+        Some(self.cmp(other))
     }
 }
 
@@ -57,10 +75,10 @@ impl From<PreciseTime> for Duration {
 }
 
 impl From<std::time::Duration> for Duration {
-    fn from(d: std::time::Duration) -> Self {
+    fn from(dur: std::time::Duration) -> Self {
         Self {
-            secs: d.as_secs(),
-            picos: d.subsec_nanos() * PICOS_PER_NANO
+            secs: dur.as_secs(),
+            picos: dur.subsec_nanos() * PICOS_PER_NANO
         }
     }
 }
