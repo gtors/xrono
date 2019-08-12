@@ -1,4 +1,4 @@
-pub type TimeInt = u64;
+pub type TimeInt = i128;
 
 // Time units that can be easyly converted to seconds.
 pub enum PreciseTime {
