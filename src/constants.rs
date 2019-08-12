@@ -1,0 +1,13 @@
+pub const PICOS_PER_SEC: u64 = 1_000_000_000_000;
+pub const PICOS_PER_MILLI: u64 = 1_000_000_000;
+pub const PICOS_PER_MICRO: u64 = 1_000_000;
+pub const PICOS_PER_NANO: u64 = 1_000;
+pub const NANOS_PER_SEC: u64 = 1_000_000_000;
+pub const NANOS_PER_MILLI: u64 = 1_000_000;
+pub const NANOS_PER_MICRO: u64 = 1_000;
+pub const MICROS_PER_SEC: u64 = 1_000_000;
+pub const MILLIS_PER_SEC: u64 = 1_000;
+pub const SECS_PER_MINUTE: u64 = 60;
+pub const SECS_PER_HOUR: u64 = 3_600;
+pub const SECS_PER_DAY: u64 = 86_400;
+pub const SECS_PER_WEEK: u64 = 604_800;
